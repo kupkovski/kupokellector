@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :collections, only: [:index, :show]
 
   namespace :admin do
+    resources :cards
     resources :collections
   end
 end

@@ -1,0 +1,11 @@
+<% content_for :title, "New card" %>
+
+<h1>New card</h1>
+
+<%= render "form", card: @card %>
+
+<br>
+
+<div>
+  <%= link_to "Back to cards", admin_cards_path %>
+</div>
