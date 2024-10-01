@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @collection %>
+
+<div>
+  <%= link_to "Edit this collection", edit_admin_collection_path(@collection) %> |
+  <%= link_to "Back to collections", admin_collections_path %>
+
+  <%= button_to "Destroy this collection", admin_collection_path(@collection), method: :delete, data: { turbo_confirm: "Are you sure?" }  %>
+</div>

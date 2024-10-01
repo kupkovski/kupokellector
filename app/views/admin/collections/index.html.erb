@@ -8,9 +8,9 @@
   <% @collections.each do |collection| %>
     <%= render collection %>
     <p>
-      <%= link_to "Show this collection", collection %>
+      <%= link_to "Show this collection", admin_collection_path(collection) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New collection", new_collection_path %>
+<%= link_to "New collection", new_admin_collection_path %>
