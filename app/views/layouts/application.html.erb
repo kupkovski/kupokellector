@@ -13,11 +13,23 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" >
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <main class="container">
+      <nav>
+        <ul>
+          <li><strong><%= link_to 'Kupokellector', root_path %></strong></li>
+        </ul>
+        <ul>
+          <li><a href="#" class="contrast">Collections</a></li>
+          <li><a href="#" class="contrast">Login</a></li>
+        </ul>
+      </nav>
+      <%= yield %>
+    </main>
   </body>
 </html>
