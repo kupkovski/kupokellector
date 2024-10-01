@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_01_194706) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_01_224826) do
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.datetime "released_at"
