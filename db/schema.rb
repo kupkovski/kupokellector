@@ -14,8 +14,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_01_232204) do
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.integer "collection_number"
+    t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_cards_on_collection_id"
   end
 
   create_table "collections", force: :cascade do |t|

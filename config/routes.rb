@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "dashboard#index"
 
-  resources :collections, only: [:index, :show]
+  resources :collections, only: [ :index, :show ]
 
   namespace :admin do
-    resources :cards
-    resources :collections
+    resources :collections do
+      resources :cards
+    end
   end
 end

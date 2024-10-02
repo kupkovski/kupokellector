@@ -3,8 +3,9 @@
 <%= render @card %>
 
 <div>
-  <%= link_to "Edit this card", edit_admin_card_path(@card) %> |
-  <%= link_to "Back to cards", admin_cards_path %>
+  <%= link_to "Edit this card", edit_admin_collection_card_path(@collection, @card) %> |
+  <%= link_to "Back to cards", admin_collection_cards_path(@collection) %>
 
-  <%= button_to "Destroy this card", admin_card_path(@card), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
+  <p></p>
+  <%= button_to "Destroy this card", admin_collection_card_path(@collection, @card), method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
 </div>

@@ -1,4 +1,4 @@
-<%= form_with(model: [:admin, card]) do |form| %>
+<%= form_with(model: [:admin, :collection, card]) do |form| %>
   <% if card.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
