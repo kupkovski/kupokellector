@@ -5,5 +5,6 @@ class CollectionsController < ApplicationController
 
   def show
     @collection = Collection.find(params[:id])
+    @cards = @collection.cards.order(collection_number: :asc)
   end
 end

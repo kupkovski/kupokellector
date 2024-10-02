@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_01_232204) do
   create_table "collections", force: :cascade do |t|
     t.string "name", null: false
     t.date "released_at", null: false
+    t.string "acronym", null: false
+    t.integer "total_cards", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -22,6 +22,16 @@
   </div>
 
   <div>
+    <%= form.label :acronym, style: "display: block" %>
+    <%= form.text_field :acronym, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :total_cards, style: "display: block" %>
+    <%= form.number_field :total_cards, required: true %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

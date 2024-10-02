@@ -26,7 +26,7 @@ class Admin::CollectionsController < ApplicationController
     respond_to do |format|
       if @collection.save
         format.html { redirect_to admin_collection_path(@collection), notice: "Collection was successfully created." }
-        format.json { render :show, status: :created, location: [:admin, @collection] }
+        format.json { render :show, status: :created, location: [ :admin, @collection ] }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class Admin::CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:name, :released_at)
+      params.require(:collection).permit(:name, :released_at, :acronym, :total_cards)
     end
 end

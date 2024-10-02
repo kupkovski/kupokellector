@@ -1,1 +1,14 @@
 <h1><%= @collection.name %></h1>
+
+<% @cards.each_slice(6) do |group| %>
+  <ul class="grid">
+    <% group.each do |card| %>
+      <article class="">
+        <%= link_to "" do %>
+          <div><%= card.name %></div>
+          <small><%= card.display_collection_number %></small>
+        <% end %>
+      </article>
+    <% end %>
+  </ul>
+<% end %>
