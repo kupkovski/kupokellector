@@ -1,0 +1,11 @@
+<article class="" id="<%= dom_id(card) %>">
+  <% if current_user.has_card?(card) %>
+    <div><%= button_to "✅", discard_card_path(card), method: :delete, style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
+  <% else %>
+    <div><%= button_to "☑", collect_card_path(card), style:  "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
+  <% end %>
+  <%= link_to "" do %>
+    <div><%= card.name %></div>
+    <small><%= card.display_collection_number %></small>
+  <% end %>
+</article>
