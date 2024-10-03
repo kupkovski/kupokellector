@@ -1,9 +1,17 @@
-<h1><%= @collection.name %></h1>
+<h1><%= @collection.acronym %> - <%= @collection.name %></h1>
+<article>
+  Total collected: <%= current_user.total_cards_from_collection(@collection) %>/<%= @collection.total_cards %>
+</article>
 
 <% @cards.each_slice(6) do |group| %>
   <ul class="grid">
     <% group.each do |card| %>
       <article class="">
+        <% if current_user.has_card?(card) %>
+          <div><%= button_to "✅", discard_card_path(card), style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
+        <% else %>
+          <div><%= button_to "☑", collect_card_path(card), style:  "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
+        <% end %>
         <%= link_to "" do %>
           <div><%= card.name %></div>
           <small><%= card.display_collection_number %></small>

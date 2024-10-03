@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_03_122101) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_03_140811) do
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.integer "collection_number"
@@ -29,6 +29,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_03_122101) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_cards", force: :cascade do |t|
+    t.integer "card_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_user_cards_on_card_id"
+    t.index ["user_id"], name: "index_user_cards_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -36,4 +45,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_03_122101) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "user_cards", "cards"
+  add_foreign_key "user_cards", "users"
 end
