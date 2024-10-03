@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root "dashboard#index"
 
   resources :collections, only: [ :index, :show ]
+  resource :session #, only: [ :new, :create, :destroy ]
 
   namespace :admin do
     resources :collections do

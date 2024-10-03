@@ -19,17 +19,25 @@
   </head>
 
   <body>
-    <main class="container">
-      <nav>
-        <ul>
-          <li><strong><%= link_to 'Kupokellector', root_path %></strong></li>
-        </ul>
-        <ul>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+
+   <main class="container">
+    <nav>
+      <ul>
+        <li><strong><%= link_to 'Kupokellector', root_path %></strong></li>
+      </ul>
+      <ul>
+        <% if user_signed_in? %>
           <li><%= link_to "Collections", collections_path, class: "contrast" %></li>
-          <li><a href="#" class="contrast">Login</a></li>
-        </ul>
-      </nav>
-      <%= yield %>
+          <li><%= current_user.name %></li>
+          <li><%= button_to "Logout", session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Login", new_session_path, class: "contrast" %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <%= yield %>
     </main>
   </body>
 </html>
