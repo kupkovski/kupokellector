@@ -19,25 +19,29 @@
   </head>
 
   <body>
-    <div><%= notice %></div>
-    <div><%= alert %></div>
-
-   <main class="container">
-    <nav>
-      <ul>
-        <li><strong><%= link_to 'Kupokellector', root_path %></strong></li>
-      </ul>
-      <ul>
-        <% if user_signed_in? %>
-          <li><%= link_to "Collections", collections_path, class: "contrast" %></li>
-          <li><%= current_user.name %></li>
-          <li><%= button_to "Logout", session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Login", new_session_path, class: "contrast" %></li>
-        <% end %>
-      </ul>
-    </nav>
-    <%= yield %>
+    <% if notice.present? || alert.present? %>
+      <article style="text-align: center">
+        <div style="color: green"><%= notice %></div>
+        <div style="color: red"><%= alert %></div>
+      </article>
+    <% end %>
+    <main class="container">
+      <nav>
+        <ul>
+          <li><strong><%= link_to 'Kupokellector', root_path %></strong></li>
+        </ul>
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= current_user.name %></li>
+            <li><%= link_to "View Collections", collections_path, class: "contrast" %></li>
+            <li><%= link_to "Manage Collections", admin_collections_path, class: "contrast" %></li>
+            <li><%= button_to "Logout", session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", new_session_path, class: "contrast" %></li>
+          <% end %>
+        </ul>
+      </nav>
+      <%= yield %>
     </main>
   </body>
 </html>
