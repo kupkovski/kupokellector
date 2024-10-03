@@ -11,7 +11,6 @@ class User < ApplicationRecord
     cards.include?(card)
   end
 
-
   def cards_from_collection(collection)
     cards.where(collection_id: collection.id)
   end

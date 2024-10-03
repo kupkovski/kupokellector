@@ -1,7 +1,14 @@
 <h1><%= @collection.acronym %> - <%= @collection.name %></h1>
-<article>
-  Total collected: <%= current_user.total_cards_from_collection(@collection) %>/<%= @collection.total_cards %>
-</article>
+
+<%= turbo_stream_from "user_cards_count" %>
+
+<div id="user_cards_count">
+  <%= render partial: "cards_total", 
+              locals: { 
+                total_collected_cards: current_user.total_cards_from_collection(@collection),
+              }
+  %>
+</div>
 
 <% @cards.each_slice(6) do |group| %>
   <ul class="grid">
