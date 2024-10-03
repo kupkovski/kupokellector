@@ -13,7 +13,7 @@
 <% @cards.each_slice(6) do |group| %>
   <ul class="grid">
     <% group.each do |card| %>
-      <%= render partial: "card", locals: { card: card } %>
+      <%= render partial: "card", locals: { card:, user: current_user } %>
     <% end %>
   </ul>
 <% end %>

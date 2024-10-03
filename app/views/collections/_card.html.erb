@@ -1,6 +1,6 @@
 <%= turbo_frame_tag(dom_id(card)) do %>
   <article class="">
-    <% if current_user.has_card?(card) %>
+    <% if user.has_card?(card) %>
       <div><%= button_to "✅", discard_card_path(card), method: :delete, style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
     <% else %>
       <div><%= button_to "☑", collect_card_path(card), style:  "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>

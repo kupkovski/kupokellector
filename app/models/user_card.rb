@@ -8,13 +8,17 @@ class UserCard < ApplicationRecord
   private
 
   def create_broadcast
-    card_collection = card.collection
+    card_collection = card.reload.collection
     total_collected_cards = user.reload.total_cards_from_collection(card_collection)
 
     broadcast_update_to "user_cards_count",
       partial: "collections/cards_total",
-      locals: {
-        total_collected_cards:
-      }, target: "user_cards_count"
+      locals: { total_collected_cards: },
+      target: "user_cards_count"
+
+    broadcast_update_to "card_#{card.id}",
+      partial: "collections/card",
+      locals: { card:, user: },
+      target: "card_#{card.id}"
   end
 end

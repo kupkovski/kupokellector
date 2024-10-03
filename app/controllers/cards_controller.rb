@@ -4,13 +4,12 @@ class CardsController < ApplicationController
   before_action :set_card
 
   def collect
-
     current_user.cards << @card
 
     render turbo_stream: turbo_stream.replace(
       dom_id(@card),
       partial: "collections/card",
-      locals: { card: @card }
+      locals: { card: @card, user: current_user }
     )
   end
 
@@ -22,7 +21,7 @@ class CardsController < ApplicationController
     render turbo_stream: turbo_stream.replace(
       dom_id(@card),
       partial: "collections/card",
-      locals: { card: @card }
+      locals: { card: @card, user: current_user }
     )
   end
 
