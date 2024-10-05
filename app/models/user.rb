@@ -18,4 +18,11 @@ class User < ApplicationRecord
   def total_cards_from_collection(collection)
     cards_from_collection(collection).count
   end
+
+  def percentage_cards_from_collection(collection)
+    (
+      (total_cards_from_collection(collection) * 100) /
+      collection.total_cards.to_f
+    ).round(2)
+  end
 end
