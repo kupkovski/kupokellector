@@ -17,7 +17,7 @@ class UserCard < ApplicationRecord
       target: "user_cards_count"
 
     user_has_card = user.has_card?(card)
-    broadcast_update_to "card_#{card.id}",
+    broadcast_update_to "card_selections",
       partial: "collections/card",
       locals: { card:, user_has_card: },
       target: "card_#{card.id}"
@@ -27,7 +27,5 @@ class UserCard < ApplicationRecord
       partial: "collections/cards_percentage",
       locals: { percent: cards_percent },
       target: "user_cards_percentage"
-
-
   end
 end
