@@ -1,0 +1,9 @@
+<span style="margin-left: 20px;">
+  <%= link_to "All", filter_collection_path(@collection, q: "all"), style: active_style(params[:q], "all") %>
+</span>
+<span style="margin-left: 5px;">
+  <%= link_to "Owned", filter_collection_path(@collection, q: "owned"), style: active_style(params[:q], "owned") %>
+</span>
+<span style="margin-left: 5px;">
+  <%= link_to "Needed", filter_collection_path(@collection, q: "needed"), style: active_style(params[:q], "needed") %>
+</span>

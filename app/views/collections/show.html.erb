@@ -22,7 +22,8 @@
                 }
     %>
   </span>
-  </article>
+  <%= render partial: "filters" %>
+ </article>
 </div>
 
 <% @cards.each_slice(6) do |group| %>

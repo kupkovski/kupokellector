@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   root "dashboard#index"
 
-  resources :collections, only: [ :index, :show ]
+  resources :collections, only: [ :index, :show ] do
+    member do
+      get "filter"
+    end
+  end
 
   resources :cards, only: [ :index ] do
    member do
