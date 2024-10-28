@@ -1,25 +1,16 @@
 class CollectionsController < ApplicationController
   before_action :load_collection, only: [ :show, :filter ]
-  
+
   def index
     @collections = Collection.order(released_at: :desc).all
   end
 
   def show
-    @user = User.last
-    @collection = Collection.find(params[:id])
-    @cards = @collection.cards.order(collection_number: :asc)
+    @cards = Cards::Filterer.new(user: current_user, collection: @collection, query: "").call
   end
 
   def filter
-    case params[:q].to_s
-    when "owned"
-      @cards = current_user.cards_from_collection(@collection) 
-    when "needed"
-      @cards = @collection.cards - current_user.cards_from_collection(@collection)
-    else
-      @cards = @collection.cards.order(collection_number: :asc)
-    end
+    @cards = Cards::Filterer.new(user: current_user, collection: @collection, query: params[:q].to_s).call
     render "show"
   end
 
