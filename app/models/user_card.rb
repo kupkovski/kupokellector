@@ -1,5 +1,5 @@
 class UserCard < ApplicationRecord
-  belongs_to :card
+  belongs_to :card, class_name: "Card::Record"
   belongs_to :user
 
   after_create_commit { create_broadcast }

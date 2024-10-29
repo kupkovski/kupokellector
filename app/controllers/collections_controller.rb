@@ -6,11 +6,11 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @cards = Cards::Filterer.new(user: current_user, collection: @collection, query: "").call
+    @cards = Card::Filtering.new(user: current_user, collection: @collection, query: "").call
   end
 
   def filter
-    @cards = Cards::Filterer.new(user: current_user, collection: @collection, query: params[:q].to_s).call
+    @cards = Card::Filtering.new(user: current_user, collection: @collection, query: params[:q].to_s).call
     render "show"
   end
 

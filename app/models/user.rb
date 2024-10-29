@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :email, :name, presence: true
 
   has_many :user_cards
-  has_many :cards, through: :user_cards
+  has_many :cards, through: :user_cards, class_name: "Card::Record"
 
 
   def has_card?(card)

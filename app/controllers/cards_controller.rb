@@ -30,6 +30,6 @@ class CardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = Card::Record.find(params[:id])
   end
 end
