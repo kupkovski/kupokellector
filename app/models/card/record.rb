@@ -3,7 +3,8 @@ module Card
     self.table_name = "cards"
 
     validates :name, presence: true
-    belongs_to :collection
+
+    belongs_to :collection, class_name: "Collection::Record"
 
     has_many :user_cards
     has_many :cards, through: :user_cards

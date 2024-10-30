@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
   before_action :load_collection, only: [ :show, :filter ]
 
   def index
-    @collections = Collection.order(released_at: :desc).all
+    @collections = Collection::Record.order(released_at: :desc).all
   end
 
   def show
@@ -16,7 +16,7 @@ class CollectionsController < ApplicationController
 
   private
   def load_collection
-    @collection = Collection.find(params[:id])
+    @collection = Collection::Record.find(params[:id])
     @cards = []
   end
 end
