@@ -4,12 +4,14 @@ class CardsController < ApplicationController
   before_action :set_card
 
   def collect
-    collect_card = Card::Collecting.new(user: current_user, card: @card).call
-    render turbo_stream: turbo_stream.replace(
-      dom_id(@card),
-      partial: "collections/card",
-      locals: { card: @card, user_has_card: collect_card }
-    )
+    case Card::Collecting.call(user: current_user, card: @card)
+    in Solid::Success(card:)
+      render turbo_stream: turbo_stream.replace(
+        dom_id(@card),
+        partial: "collections/card",
+        locals: { card: @card, user_has_card: true }
+      )
+    end
   end
 
   def discard

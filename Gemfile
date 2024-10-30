@@ -57,3 +57,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "solid-process", "~> 0.4.0"
