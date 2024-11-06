@@ -1,4 +1,4 @@
 class Collection < ApplicationRecord
-  validates :name, :released_at, presence: true
+  validates :name, :acronym, :released_at, :total_cards, presence: true
   has_many :cards
 end

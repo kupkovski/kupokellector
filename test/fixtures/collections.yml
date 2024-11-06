@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Stellar Crown
+  acronym: STC
+  total_cards: 10
   released_at: 2024-10-01 19:48:26
 
 two:
-  name: MyString
+  name: Base Set
+  acronym: BAS
+  total_cards: 20
   released_at: 2024-10-01 19:48:26
