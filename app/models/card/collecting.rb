@@ -3,16 +3,17 @@ module Card
     input do
       attribute :user
       attribute :card
+
+      validates :user, :card, presence: true
     end
 
     def call(attributes)
       rollback_on_failure {
         Given(attributes)
-          .and_then(:check_presence_of_user)
-          .and_then(:check_presence_of_card)
-          .and_then(:check_existance_of_user)
-          .and_then(:check_existance_of_card)
-          .and_then(:check_if_user_already_has_card)
+          # .and_then(:check_presence_of_card)
+          # .and_then(:check_existance_of_user)
+          # .and_then(:check_existance_of_card)
+          # .and_then(:check_if_user_already_has_card)
           .and_then(:collect_card)
       }
     end

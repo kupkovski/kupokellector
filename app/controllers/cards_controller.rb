@@ -5,6 +5,10 @@ class CardsController < ApplicationController
 
   def collect
     case Card::Collecting.call(user: current_user, card: @card)
+    in Solid::Failure(input:)
+      respond_to do |format|
+        format.turbo_stream { flash.now[:alert] = input.errors.full_messages.join(",") }
+      end
     in Solid::Success(card:)
       render turbo_stream: turbo_stream.replace(
         dom_id(@card),
