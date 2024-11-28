@@ -9,6 +9,10 @@ class CardsController < ApplicationController
       respond_to do |format|
         format.turbo_stream { flash.now[:alert] = input.errors.full_messages.join(",") }
       end
+    in Solid::Failure(:user_already_has_card, _)
+      respond_to do |format|
+        format.turbo_stream { flash.now[:alert] = "User already has card #{@card.name}" }
+    end
     in Solid::Success(card:)
       render turbo_stream: turbo_stream.replace(
         dom_id(@card),
