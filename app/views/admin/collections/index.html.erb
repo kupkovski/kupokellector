@@ -6,7 +6,7 @@
 
 <div id="collections">
   <% @collections.each do |collection| %>
-    <%= render collection %>
+    <%= render 'admin/collections/record', collection: collection %>
     <p>
       <%= link_to "Show this collection", admin_collection_path(collection) %>
     </p>

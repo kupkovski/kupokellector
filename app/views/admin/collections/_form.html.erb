@@ -1,4 +1,7 @@
-<%= form_with(model: [:admin, collection]) do |form| %>
+
+<% form_method = collection.new_record? ? :post : :put %>
+
+<%= form_with(model: collection, url: admin_collection_path(collection), method: form_method) do |form| %>
   <% if collection.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>

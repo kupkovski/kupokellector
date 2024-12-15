@@ -3,7 +3,7 @@ class Admin::CollectionsController < ApplicationController
 
   # GET /collections or /collections.json
   def index
-    @collections = Collection.all
+    @collections = Collection::Record.all
   end
 
   # GET /collections/1 or /collections/1.json
@@ -12,7 +12,7 @@ class Admin::CollectionsController < ApplicationController
 
   # GET /collections/new
   def new
-    @collection = Collection.new
+    @collection = Collection::Record.new
   end
 
   # GET /collections/1/edit
@@ -21,7 +21,7 @@ class Admin::CollectionsController < ApplicationController
 
   # POST /collections or /collections.json
   def create
-    @collection = Collection.new(collection_params)
+    @collection = Collection::Record.new(collection_params)
 
     respond_to do |format|
       if @collection.save
@@ -60,11 +60,11 @@ class Admin::CollectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
-      @collection = Collection.find(params[:id])
+      @collection = Collection::Record.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:name, :released_at, :acronym, :total_cards)
+      params.require(:collection_record).permit(:name, :released_at, :acronym, :total_cards)
     end
 end
