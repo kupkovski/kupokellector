@@ -4,7 +4,7 @@ class Admin::CardsController < ApplicationController
 
   # GET /admin/cards or /admin/cards.json
   def index
-    @cards = Card.all
+    @cards = @collection.cards.all
   end
 
   # GET /admin/cards/1 or /admin/cards/1.json
@@ -13,7 +13,7 @@ class Admin::CardsController < ApplicationController
 
   # GET /admin/cards/new
   def new
-    @card = Card.new
+    @card = @collection.cards.build
   end
 
   # GET /admin/cards/1/edit
@@ -62,7 +62,7 @@ class Admin::CardsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_collection
-      @collection = Collection.find(params[:collection_id])
+      @collection = Collection::Record.find(params[:collection_id])
     end
 
     def set_card
@@ -71,6 +71,6 @@ class Admin::CardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def card_params
-      params.require(:card).permit(:name, :collection_number)
+      params.require(:card_record).permit(:name, :collection_number)
     end
 end

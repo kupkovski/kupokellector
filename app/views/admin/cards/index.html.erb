@@ -6,7 +6,7 @@
 
 <div id="cards">
   <% @cards.each do |card| %>
-    <%= render card %>
+    <%= render 'admin/cards/card', card: %>
     <p>
       <%= link_to "Show this card", admin_collection_card_path(@collection, card) %>
     </p>

@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @card %>
+<%= render 'admin/cards/card', card: @card %>
 
 <div>
   <%= link_to "Edit this card", edit_admin_collection_card_path(@collection, @card) %> |
