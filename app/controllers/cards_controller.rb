@@ -30,14 +30,13 @@ class CardsController < ApplicationController
       end
     in Solid::Failure(:user_has_no_such_card, _)
       respond_to do |format|
-        format.turbo_stream { flash.now[:alert] = "User does not have such card #{@card.name}" }
+        format.turbo_stream { flash.now[:alert] = "User does not have such card: #{@card.name} in this collection" }
       end
     in Solid::Success(card:)
-      user_has_card = current_user.has_card?(@card)
       render turbo_stream: turbo_stream.replace(
         dom_id(@card),
         partial: "collections/card",
-        locals: { card: @card, user_has_card: }
+        locals: { card: @card, user_has_card: false }
       )
     end
   end

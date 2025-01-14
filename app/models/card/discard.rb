@@ -25,6 +25,7 @@ module Card
 
     def discard_card(user:, card:, **)
       user.cards.destroy(card)
+
       Success(:card_discarded, card: card)
     end
   end
