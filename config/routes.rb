@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [ :index ] do
+  resources :cards, only: [ :index, :show ] do
    member do
      post "collect"
      delete "discard"

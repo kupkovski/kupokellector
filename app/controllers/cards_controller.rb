@@ -3,6 +3,15 @@ class CardsController < ApplicationController
 
   before_action :set_card
 
+  def show
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("card-details", partial: "cards/details", locals: { card: @card, open: 'open' })
+      end
+    end
+  end
+
+
   def collect
     current_user.cards << @card
 

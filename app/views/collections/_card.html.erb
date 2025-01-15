@@ -1,11 +1,14 @@
 <%= turbo_frame_tag(dom_id(card)) do %>
   <article class="">
+    <%= link_to card, data: { turbo: true, turbo_stream: true } do %>
+      <img src="<%= card.image_url %>" />
+    <% end %>
     <% if user_has_card %>
-      <div><%= button_to "✅", discard_card_path(card), method: :delete, style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
+      <div><%= button_to "✅", discard_card_path(card), method: :delete, style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;", form_class: "inline-form" %></div>
     <% else %>
       <div><%= button_to "☑", collect_card_path(card), style:  "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;" %></div>
     <% end %>
-    <%= link_to "" do %>
+    <%= link_to card, data: { turbo: true, turbo_stream: true } do %>
       <div><%= card.name %></div>
       <small><%= card.display_collection_number %></small>
     <% end %>
