@@ -1,0 +1,33 @@
+<div data-controller="modal">
+  <dialog open data-target="modal.dialog">
+    <article>
+      <header>
+        <button aria-label="Close" rel="prev" data-action="click->modal#close"></button>
+        <p>
+          <strong><%= card.name %></strong>
+        </p>
+      </header>
+      <div class="grid">
+        <div class="container-fluid">
+          <img width="300" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/79de6b66-b3ca-46d1-bae5-c8c36612e006/d2p1otm-d1530776-7772-45d8-b46e-0e122da7e134.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc5ZGU2YjY2LWIzY2EtNDZkMS1iYWU1LWM4YzM2NjEyZTAwNlwvZDJwMW90bS1kMTUzMDc3Ni03NzcyLTQ1ZDgtYjQ2ZS0wZTEyMmRhN2UxMzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OqoIKf0lh-Ab5dQo5YnlBKnHU9-ahibbb4OBHAEert8"></img>
+        </div>
+        <div class="card">
+          <p>
+            <strong>Collection:</strong> <%= card.collection.name %>
+          </p>
+          <p>
+            <strong>Number:</strong> <%= card.collection_number %>
+          </p>
+          <div class="card">
+            <% if current_user.has_card?(card) %>
+              <%= button_to "✅", discard_card_path(card), method: :delete, style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0; display: inline" %>
+            <% else %>
+              I need this card
+              <%= button_to "☑", collect_card_path(card), style:  "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0; display:inline" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </article>
+  </dialog>
+</div>
