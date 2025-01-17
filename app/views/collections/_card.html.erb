@@ -1,7 +1,7 @@
 <%= turbo_frame_tag(dom_id(card)) do %>
   <article class="">
     <%= link_to card, data: { turbo: true, turbo_stream: true } do %>
-      <img src="<%= card.image_url %>" />
+      <img src="<%= card.image_url %>" width="120" />
     <% end %>
     <% if user_has_card %>
       <div><%= button_to "✅", discard_card_path(card), method: :delete, style: "text-decoration: none; text-decoration: none; background: none; border: none; width: 10px; padding: 0;", form_class: "inline-form" %></div>
