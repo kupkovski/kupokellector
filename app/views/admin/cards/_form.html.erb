@@ -1,5 +1,8 @@
-<%= form_with(model: [:admin, :collection, card]) do |form| %>
-  <% if card.errors.any? %>
+<% path = card.new_record? ? admin_collection_cards_path(@collection) : admin_collection_card_path(@collection, @card) %>
+
+<% form_method = card.new_record? ? :post : :put %>
+
+<%= form_with(model: card, url: path, method: form_method) do |form| %>  <% if card.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
 
@@ -19,6 +22,17 @@
   <div>
     <%= form.label :collection_number, style: "display: block" %>
     <%= form.number_field :collection_number, required: true %>
+  </div>
+
+
+  <% if card.image.present? %>
+    <%= image_tag card.image %>
+
+  <% end %>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
   </div>
 
   <div>

@@ -8,7 +8,11 @@
         </p>
       </header>
       <div class="grid">
-        <img src="<%= card.image_url %>" />
+        <% if card.image.present? %>
+          <%= image_tag card.image %>
+        <% else %>
+          <img src="<%= card.external_image_url %>" width="120" />
+        <% end %>
         <div class="card">
           <h2>
             <%= card.name %>

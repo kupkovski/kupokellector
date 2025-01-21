@@ -9,4 +9,10 @@
     <%= card.collection_number %>
   </p>
 
+  <% if card.image.present? %>
+    <p>
+      <%= image_tag card.image, width: 120 %>
+    </p>
+  <% end %>
+
 </div>

@@ -1,6 +1,6 @@
 <% content_for :title, "Editing card" %>
 
-<h1>Editing card</h1>
+<h1>Editing card - <%= @card.collection.name %></h1>
 
 <%= render "form", card: @card %>
 
