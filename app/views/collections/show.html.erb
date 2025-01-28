@@ -7,8 +7,8 @@
 <div>
   <article>
     <span id="user_cards_count">
-    <%= render partial: "cards_total", 
-                locals: { 
+    <%= render partial: "cards_total",
+                locals: {
                   total_collected_cards: current_user.total_cards_from_collection(@collection),
                 }
     %>
@@ -16,8 +16,8 @@
   <span>/ <%= @collection.total_cards %></span>
 
   <span id="user_cards_percentage" style="background-color: rgb(61, 71, 92); padding: 8px; margin-left: 20px;">
-    <%= render partial: "cards_percentage", 
-                locals: { 
+    <%= render partial: "cards_percentage",
+                locals: {
                   percent: current_user.percentage_cards_from_collection(@collection),
                 }
     %>

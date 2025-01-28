@@ -4,7 +4,7 @@ class Admin::CardsController < ApplicationController
 
   # GET /admin/cards or /admin/cards.json
   def index
-    @cards = Card.all
+    @cards = @collection.cards.all
   end
 
   # GET /admin/cards/1 or /admin/cards/1.json

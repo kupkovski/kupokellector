@@ -6,7 +6,7 @@ class CardsController < ApplicationController
   def show
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace("card-details", partial: "cards/details", locals: { card: @card, open: 'open' })
+        render turbo_stream: turbo_stream.replace("card-details", partial: "cards/details", locals: { card: @card })
       end
     end
   end

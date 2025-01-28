@@ -1,6 +1,8 @@
-class Card < ApplicationRecord
+# frozen_string_literal: true
 
-  IMAGE_BASE_URL = "https://dz3we2x72f7ol.cloudfront.net/expansions" 
+class Card < ApplicationRecord
+  IMAGE_BASE_URL = "https://dz3we2x72f7ol.cloudfront.net/expansions"
+
   validates :name, presence: true
   belongs_to :collection
 
