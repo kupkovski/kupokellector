@@ -3,6 +3,9 @@ class CollectionsController < ApplicationController
   
   def index
     @collections = Collection.order(released_at: :desc).all
+    render Views::Collections::Index.new(
+      collections: @collections
+    )
   end
 
   def show
