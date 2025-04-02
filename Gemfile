@@ -55,3 +55,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "phlex-rails", "~> 2.1"
